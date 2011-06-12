@@ -1,0 +1,506 @@
+**FFFFFF.FFFFFF.......***...FFFFFFF.........FFFFF..........FFFFFFFFFFFFFFFF..............................FFFFFFF.......*..****.FFFF**..................F......**.................................*..............F.........................................*..***..FF......FFFF..FFF.FF*FF..............................F
+
+Pending:
+  PostCommunityRelationship add some examples to (or delete) /home/hardik/Desktop/rb/rails_projects/twopickles/spec/models/post_community_relationship_spec.rb
+    # Not Yet Implemented
+    # ./spec/models/post_community_relationship_spec.rb:4
+  CommunityImage add some examples to (or delete) /home/hardik/Desktop/rb/rails_projects/twopickles/spec/models/community_image_spec.rb
+    # Not Yet Implemented
+    # ./spec/models/community_image_spec.rb:4
+  Post validations should reject invalid email addresses
+    # Not Yet Implemented
+    # ./spec/models/post_spec.rb:127
+  Post validations should reject identical user email addresses
+    # Not Yet Implemented
+    # ./spec/models/post_spec.rb:128
+  Post validations should reject identical user email addresses up to case
+    # Not Yet Implemented
+    # ./spec/models/post_spec.rb:129
+  PostImage add some examples to (or delete) /home/hardik/Desktop/rb/rails_projects/twopickles/spec/models/post_image_spec.rb
+    # Not Yet Implemented
+    # ./spec/models/post_image_spec.rb:4
+  Trades create as a nonregistered user failure should not create a trade
+    # Not Yet Implemented
+    # ./spec/requests/trades_spec.rb:10
+  Trades create as a nonregistered user success should create a new trade
+    # Not Yet Implemented
+    # ./spec/requests/trades_spec.rb:13
+  Trades create as a registered user failure should not create a trade
+    # Not Yet Implemented
+    # ./spec/requests/trades_spec.rb:19
+  Trades create as a registered user success should create a trade
+    # Not Yet Implemented
+    # ./spec/requests/trades_spec.rb:22
+  Posts update as another user (not post owner) should have test cases
+    # Not Yet Implemented
+    # ./spec/requests/posts_spec.rb:89
+  Posts update as the post owner should have test cases
+    # Not Yet Implemented
+    # ./spec/requests/posts_spec.rb:92
+  Users edit profile failure should not change the users information
+    # Not Yet Implemented
+    # ./spec/requests/users_spec.rb:72
+  Users edit profile success should change the users information
+    # Not Yet Implemented
+    # ./spec/requests/users_spec.rb:75
+  StatesController should respond to an XML request
+    # Not Yet Implemented
+    # ./spec/controllers/states_controller_spec.rb:5
+  PostsController GET 'new' should have category fields
+    # Not Yet Implemented
+    # ./spec/controllers/posts_controller_spec.rb:40
+  PostsController GET 'show' should have test cases
+    # Not Yet Implemented
+    # ./spec/controllers/posts_controller_spec.rb:63
+  PostsController GET 'edit' should have test cases
+    # Not Yet Implemented
+    # ./spec/controllers/posts_controller_spec.rb:67
+  PostsController PUT 'update' should have test cases
+    # Not Yet Implemented
+    # ./spec/controllers/posts_controller_spec.rb:71
+  PostsController DELETE 'destroy' for a non-signed-in but authorized user should destroy the post
+    # Not Yet Implemented
+    # ./spec/controllers/posts_controller_spec.rb:258
+
+Failures:
+
+  1) Post should create a new instance given for registered post
+     Failure/Error: @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:14:in `block (2 levels) in <top (required)>'
+
+  2) Post should create a new instance for a non-registered post
+     Failure/Error: Post.create!(@attr.merge({ :email => email }))
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:18:in `block (2 levels) in <top (required)>'
+
+  3) Post active status should be false for a non-registered post
+     Failure/Error: post = Post.create!(@attr.merge({ :email => email }))
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:23:in `block (3 levels) in <top (required)>'
+
+  4) Post active status should be true for a registered post
+     Failure/Error: post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  5) Post hash activation for registered posts should be blank
+     Failure/Error: post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:34:in `block (4 levels) in <top (required)>'
+
+  6) Post hash activation for non-registered posts should be populated for a nonregistered post
+     Failure/Error: @post.activation_hash.should_not be_nil
+       expected: not nil
+            got: nil
+     # ./spec/models/post_spec.rb:45:in `block (4 levels) in <top (required)>'
+
+  7) Post user associations should have a user attribute
+     Failure/Error: @post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:56:in `block (3 levels) in <top (required)>'
+
+  8) Post user associations should have the right associated user
+     Failure/Error: @post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:56:in `block (3 levels) in <top (required)>'
+
+  9) Post nonregistered user associations should allow for creating with only an email address
+     Failure/Error: Post.create!(@attr.merge({ :email => "test@test.com" }))
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:68:in `block (3 levels) in <top (required)>'
+
+  10) Post city associations should have a city attribute
+     Failure/Error: @post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:73:in `block (3 levels) in <top (required)>'
+
+  11) Post trade associations should have a trades attribute
+     Failure/Error: @post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:81:in `block (3 levels) in <top (required)>'
+
+  12) Post trade associations should destroy associated trades
+     Failure/Error: @post = @user.posts.create!(@attr)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/post_spec.rb:81:in `block (3 levels) in <top (required)>'
+
+  13) UserCommunityRelationship should create a new instance given valid attributes
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbde1dbc>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  14) UserCommunityRelationship join methods should have a user attribute
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbcd5554>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  15) UserCommunityRelationship join methods should have the right user
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbc1842c>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  16) UserCommunityRelationship join methods should have a community attribute
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbbbd98c>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  17) UserCommunityRelationship join methods shuld have the right joined community
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbb5ed38>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  18) UserCommunityRelationship validations should require a user_id
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbb20984>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  19) UserCommunityRelationship validations should require a community_id
+     Failure/Error: @relationship = @user.community_relationships.build(
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xbad6690>
+     # ./spec/models/user_community_relationship_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  20) TradeMessage should create a new instance with valid attributes
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_message_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  21) TradeMessage trade associations should have a trade attribute
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_message_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  22) TradeMessage trade associations should have the right trade attribute
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_message_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  23) TradeMessage validations should require a nonblank message
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_message_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  24) TradeMessage validations should reject a long message
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_message_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  25) Trade should create a new instance given valid attributes
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  26) Trade user associations should have a user attribute
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  27) Trade user associations should have the right associated user
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  28) Trade post associations should have a post attribute
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  29) Trade post associations should have the right associated post
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  30) Trade trade message associations should have a trade messages attribute
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  31) Trade trade message associations should have trade messages in the right order
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  32) Trade trade message associations should delete trade messages
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  33) Trade validations should require either a user id or email address
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  34) Trade validations should require nonblank content
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  35) Trade validations should reject long content
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  36) Trade validations should reject invalid email addresses
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  37) Trade active status should be false for a non-registered trader
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  38) Trade active status should be true for a registered trader
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  39) Trade traders associations should be associated to both users
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  40) Trade user trade_posts associations should be associated to both posts
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/trade_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+  41) User post associations should have a posts attribute
+     Failure/Error: @post1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:196:in `block (3 levels) in <top (required)>'
+
+  42) User post associations should have the right posts in the right order
+     Failure/Error: @post1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:196:in `block (3 levels) in <top (required)>'
+
+  43) User post associations should destroy associated posts
+     Failure/Error: @post1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:196:in `block (3 levels) in <top (required)>'
+
+  44) User trades associations should have a trades attribute
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:219:in `block (3 levels) in <top (required)>'
+
+  45) User trades associations should have the right trades in the right order
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:219:in `block (3 levels) in <top (required)>'
+
+  46) User trades associations should destroy associated trades
+     Failure/Error: @post = Factory(:post, :user => @other_user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/models/user_spec.rb:219:in `block (3 levels) in <top (required)>'
+
+  47) User community relationships should have a communities relationship method
+     Failure/Error: @user.should respond_to(:community_relationships)
+       expected #<User id: 1, first_name: "John", last_name: "Doe", email: "johndoe@example.com", created_at: "2011-06-12 03:34:03", updated_at: "2011-06-12 03:34:03", encrypted_password: "ebcfab4e49e4c8663dd6d0beef93bcc89bfb2c2b992171a0e62...", salt: "e1e105ebe6b42946dcaf5234e46f15c9ebc7299d6f5cee8c76f...", active: true, activation_hash: nil, activated_at: "2011-06-12 03:34:03", admin: false> to respond to :community_relationships
+     # ./spec/models/user_spec.rb:246:in `block (3 levels) in <top (required)>'
+
+  48) Posts create as a nonregistered user failure should not create a post
+     Failure/Error: fill_in "City",           :with => ""
+     Webrat::NotFoundError:
+       Could not find field: "City"
+     # ./spec/requests/posts_spec.rb:17:in `block (6 levels) in <top (required)>'
+     # ./spec/requests/posts_spec.rb:11:in `block (5 levels) in <top (required)>'
+
+  49) Posts create as a nonregistered user success should create a new post
+     Failure/Error: fill_in "City",           :with => "1"
+     Webrat::NotFoundError:
+       Could not find field: "City"
+     # ./spec/requests/posts_spec.rb:32:in `block (6 levels) in <top (required)>'
+     # ./spec/requests/posts_spec.rb:26:in `block (5 levels) in <top (required)>'
+
+  50) Posts create as a registered user failure should not create a post
+     Failure/Error: fill_in "City",           :with => ""
+     Webrat::NotFoundError:
+       Could not find field: "City"
+     # ./spec/requests/posts_spec.rb:59:in `block (6 levels) in <top (required)>'
+     # ./spec/requests/posts_spec.rb:54:in `block (5 levels) in <top (required)>'
+
+  51) Posts create as a registered user success should create a post
+     Failure/Error: fill_in "City",           :with => "1"
+     Webrat::NotFoundError:
+       Could not find field: "City"
+     # ./spec/requests/posts_spec.rb:73:in `block (6 levels) in <top (required)>'
+     # ./spec/requests/posts_spec.rb:68:in `block (5 levels) in <top (required)>'
+
+  52) LayoutLinks when signed in as a non-admin user should have a my account link
+     Failure/Error: response.should have_selector("a",  :href => '#',
+       expected following output to contain a <a href='#'>My Account</a> tag:
+       <!DOCTYPE html>
+       <html>
+       <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+       <title>Two Pickles | Home</title>
+       <!--[if lt IE 9]>
+       <script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+       <![endif]--><link href="/stylesheets/blueprint/screen.css?1298430127" media="screen" rel="stylesheet" type="text/css">
+       <link href="/stylesheets/blueprint/print.css?1298430127" media="print" rel="stylesheet" type="text/css">
+       <!--[if lt IE 8]>
+       <link href="/stylesheets/blueprint/ie.css?1298430127" media="screen" rel="stylesheet" type="text/css" />
+       <![endif]--><link href="/stylesheets/custom.css?1299731638" media="screen" rel="stylesheet" type="text/css">
+       <script src="/javascripts/prototype.js?1298427639" type="text/javascript"></script><script src="/javascripts/effects.js?1298427639" type="text/javascript"></script><script src="/javascripts/dragdrop.js?1298427639" type="text/javascript"></script><script src="/javascripts/controls.js?1298427639" type="text/javascript"></script><script src="/javascripts/rails.js?1298427639" type="text/javascript"></script><script src="/javascripts/application.js?1298427639" type="text/javascript"></script>
+       </head>
+       <body>
+       <div class="container">
+       <header><a href="/"><img alt="Two Pickles" class="round" src="/images/tp_logo_hi_sm.jpg?1298433442"></a>
+       <nav class="round"><ul>
+       <li><a href="/search">Search</a></li>
+       <li><a href="/posts/new">New Post</a></li>
+       <li><a href="/posts">All Posts</a></li>
+       <li><a href="/communities">Communities</a></li>
+       <li><a href="/users/1">Profile</a></li>
+       <li><a href="/signout">Sign out</a></li>
+       </ul></nav></header><section class="round"><h1>Home</h1>
+       <p>Hello world!</p>
+       
+       </section><footer><nav class="round"><ul>
+       <li><a href="/about">About</a></li>
+       <li><a href="/userguide">User Guide</a></li>
+       <li><a href="/faq">FAQ</a></li>
+       <li><a href="/safety">Safety Tips</a></li>
+       <li><a href="/privacy">Privacy Policy</a></li>
+       <li><a href="/terms">Terms of Use</a></li>
+       </ul></nav></footer>
+       </div>
+       </body>
+       </html>
+     # ./spec/requests/layout_links_spec.rb:128:in `block (4 levels) in <top (required)>'
+
+  53) UsersController GET 'show' should show the user's posts
+     Failure/Error: p1 = Factory(:post, :user => @user, :title => "Test Post 1")
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/users_controller_spec.rb:110:in `block (3 levels) in <top (required)>'
+
+  54) PostsController GET 'activate' success should redirect to the post page
+     Failure/Error: @post = Factory(:post)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:91:in `block (4 levels) in <top (required)>'
+
+  55) PostsController GET 'activate' success should have an activation confirmation message
+     Failure/Error: @post = Factory(:post)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:91:in `block (4 levels) in <top (required)>'
+
+  56) PostsController POST 'create' for signed-in users success should create a post
+     Failure/Error: lambda do
+       count should have been changed by 1, but was changed by 0
+     # ./spec/controllers/posts_controller_spec.rb:163:in `block (5 levels) in <top (required)>'
+
+  57) PostsController POST 'create' for signed-in users success should redirect to the home page
+     Failure/Error: response.should redirect_to(post_path(assigns(:post)))
+     ActionController::RoutingError:
+       No route matches {:action=>"show", :controller=>"posts", :id=>#<Post id: nil, title: "Lorem ipsum", description: "Lorem ipsum", trade_for: nil, city_id: 1, user_id: 1, created_at: nil, updated_at: nil, active: false, email: nil, activation_hash: nil, activated_at: nil>}
+     # ./spec/controllers/posts_controller_spec.rb:169:in `block (5 levels) in <top (required)>'
+
+  58) PostsController POST 'create' for signed-in users success should have a flash message do
+     Failure/Error: flash[:success].should =~ /post created/i
+       expected: /post created/i
+            got: nil (using =~)
+     # ./spec/controllers/posts_controller_spec.rb:173:in `block (5 levels) in <top (required)>'
+
+  59) PostsController POST 'create' for signed-in users success should have the correct active status (true) 
+     Failure/Error: assigns(:post).active.should be_true
+       expected false to be true
+     # ./spec/controllers/posts_controller_spec.rb:177:in `block (5 levels) in <top (required)>'
+
+  60) PostsController POST 'create' for non-signed-in users success should create a post
+     Failure/Error: lambda do
+       count should have been changed by 1, but was changed by 0
+     # ./spec/controllers/posts_controller_spec.rb:206:in `block (5 levels) in <top (required)>'
+
+  61) PostsController POST 'create' for non-signed-in users success should redirect to the confirmation screen
+     Failure/Error: response.should redirect_to(root_path)
+       Expected block to return true value.
+     # ./spec/controllers/posts_controller_spec.rb:212:in `block (5 levels) in <top (required)>'
+
+  62) PostsController POST 'create' for non-signed-in users success should have a welcome message
+     Failure/Error: flash[:success].should =~ /thanks for creating your post/i
+       expected: /thanks for creating your post/i
+            got: nil (using =~)
+     # ./spec/controllers/posts_controller_spec.rb:216:in `block (5 levels) in <top (required)>'
+
+  63) PostsController DELETE 'destroy' for a non-authorized user should deny access
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:234:in `block (4 levels) in <top (required)>'
+
+  64) PostsController DELETE 'destroy' for an authorized user should destroy the post
+     Failure/Error: @post = Factory(:post, :user => @user)
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:246:in `block (4 levels) in <top (required)>'
+
+  65) PostsController DELETE 'destroy' for a non-signed-in and unauthorized user should deny access
+     Failure/Error: @post = Factory(:post, :email => Factory.next(:email))
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:262:in `block (4 levels) in <top (required)>'
+
+  66) PostsController DELETE 'destroy' for a non-signed-in and unauthorized user should not destroy the post
+     Failure/Error: @post = Factory(:post, :email => Factory.next(:email))
+     ActiveRecord::RecordInvalid:
+       Validation failed: At least one category required
+     # ./spec/controllers/posts_controller_spec.rb:262:in `block (4 levels) in <top (required)>'
+
+  67) UserCommunityRelationshipsController DELETE 'destroy' should destroy a relationship
+     Failure/Error: @user.community_relationships.find_by_community_id(@community)
+     NoMethodError:
+       undefined method `community_relationships' for #<User:0xcc1df20>
+     # ./spec/controllers/user_community_relationships_controller_spec.rb:43:in `block (3 levels) in <top (required)>'
+
+Finished in 11.54 seconds
+312 examples, 67 failures, 20 pending

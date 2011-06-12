@@ -1,0 +1,12 @@
+%h1 Post Search_trades
+
+= form_for "post", :action => "search_trades", :method => "get" do |f|
+	.field
+		= f.label "Search_trades"
+		= f.text_field "query1"
+             
+	.actions
+		= f.submit "Search_trades"
+%hr
+	%b Search results: #{pluralize(@posts.count, "post")} found!
+	= render @posts
